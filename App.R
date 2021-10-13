@@ -1,16 +1,13 @@
-# Load packages ----
 library(shiny)
 library(maps)
 library(mapproj)
 
 
-# Load data ----
 counties <- readRDS("counties.rds")
 
-# Source helper functions -----
 source("helpers.R")
 
-# User interface ----
+
 ui <- fluidPage(
   titlePanel("censusVis"),
   
@@ -34,7 +31,7 @@ ui <- fluidPage(
   )
 )
 
-# Server logic ----
+
 server <- function(input, output) {
   output$map <- renderPlot({
     data <- switch(input$var, 
@@ -59,6 +56,5 @@ server <- function(input, output) {
   })
 }
 
-# Run app ----
-shinyApp(ui, server)
 
+shinyApp(ui, server)
